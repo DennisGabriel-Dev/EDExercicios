@@ -10,7 +10,8 @@ public class Main {
         // q06();
         // q07();
         // q08();
-        q09();
+        // q09();
+        q10();
     }
 
     static void q01(){
@@ -142,6 +143,30 @@ public class Main {
 
         result += "]";
         System.out.println(result);
+    }
+
+    static void q10(){
+        int[][] matriz = matriz();
+        int[] numbers = new int[12];
+        int sizeNumbers = 0;
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz.length; j++) {
+                if(i <= (matriz.length - 1 - j)){
+                    numbers[sizeNumbers] = matriz[i][j];
+                    sizeNumbers++;
+                }
+            }
+        }
+
+        int min = numbers[0];
+        for (int i = 0; i < sizeNumbers; i++) {
+            if (numbers[i] < min){
+                min = numbers[i];
+            }
+        }
+
+        System.out.println(min);
+
     }
 
     static void imprimirMatriz(int[][] matriz){
