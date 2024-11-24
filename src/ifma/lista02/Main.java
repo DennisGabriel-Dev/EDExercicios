@@ -4,7 +4,9 @@ public class Main {
     public static void main(String[] args) {
         //q01();
         //q02();
-        q03();
+        //q03();
+        // q04();
+        q05();
     }
 
     static void q01(){
@@ -46,6 +48,34 @@ public class Main {
             }
         }
         System.out.print("]");
+    }
+
+    static void q04(){
+        int[][] matriz = matriz();
+        int soma = 0;
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz.length; j++) {
+                if(i == (matriz.length - 1 - j)){
+                    soma += matriz[i][j];
+                }
+            }
+        }
+        System.out.println(soma);
+    }
+
+    static void q05(){
+        String result = "[";
+        int[][] matriz = matriz();
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz.length; j++) {
+                if(i >= (matriz.length - 1 - j)){
+                    result += matriz[i][j]+", ";
+                }
+            }
+        }
+
+        result += "]";
+        System.out.println(result);
     }
 
     static void imprimirMatriz(int[][] matriz){
