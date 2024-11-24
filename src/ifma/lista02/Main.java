@@ -11,7 +11,11 @@ public class Main {
         // q07();
         // q08();
         // q09();
-        q10();
+        // q10();
+        // q11();
+        // q12();
+        // q13();
+        q14();
     }
 
     static void q01(){
@@ -166,8 +170,66 @@ public class Main {
         }
 
         System.out.println(min);
-
     }
+
+    static void q11(){
+        String result = "[";
+        int[][] matriz = matriz();
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz.length; j++) {
+                if(i < (matriz.length - 1 - j)){
+                    result += matriz[i][j]+", ";
+                }
+            }
+        }
+
+        result += "]";
+        System.out.println(result);
+    }
+
+    static void q12(){
+        int produto = 1;
+        int[][] matriz = matriz();
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz.length; j++) {
+                if(i < (matriz.length - 1 - j)){
+                    produto *= matriz[i][j];
+                }
+            }
+        }
+
+        System.out.println(produto);
+    }
+
+    static void q13(){
+        int[][] matriz = matriz();
+        int[][] matrizB = new int[matriz.length][matriz.length];
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz.length; j++) {
+                if(matriz[i][j] % 2 == 0){
+                    matrizB[i][j] = (int) Math.pow(matriz[i][j], 2);
+                } else {
+                    matrizB[i][j] = (int) Math.pow(matriz[i][j], 3);
+                }
+            }
+        }
+
+        imprimirMatriz(matrizB);
+    }
+
+    static void q14(){
+        int[][] matriz = matriz();
+
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = matriz.length - 1; j >= 0 ; j--) {
+                System.out.print(matriz[j][i] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+
+
 
     static void imprimirMatriz(int[][] matriz){
         for (int i = 0; i < matriz.length; i++) {
