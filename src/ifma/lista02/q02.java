@@ -1,6 +1,6 @@
 package ifma.lista02;
 
-public class q01{
+public class q02 {
     public static void main(String[] args) {
         int[][] matriz = {
                 {1, 2, 3},
@@ -10,7 +10,7 @@ public class q01{
 
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz.length; j++) {
-                if(matriz[i][j] == matriz[i][i]){
+                if(i == (matriz.length - 1 - j)){
                     matriz[i][j] = 0;
                 }
             }
