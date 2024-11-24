@@ -54,7 +54,7 @@ public class CadastrarAlunos {
     }
 
     public boolean verificaIndice(int indice){
-        if(alunos[indice] == null){
+        if(alunos[indice] == null || indice < 0 || indice >= size){
             return false;
         }
         return true;
@@ -63,6 +63,21 @@ public class CadastrarAlunos {
     public String removerComIndice(int indice){
         if(verificaIndice(indice)){
            String nomeAluno = alunos[indice].getNome();
+           if(indice == size){
+               removerNoFinal();
+           } else if (indice == 0){
+               removerNoInicio();
+           } else {
+               alunos[indice] = null;
+               for (int i = indice; i < size; i++) {
+                   if(i + 1 != size){
+                    alunos[i] = alunos[i + 1];
+                   } else if (i + 1 == size) {
+                       alunos[i] = null;
+                   }
+               }
+               size--;
+           }
            return nomeAluno;
         }
         throw new RuntimeException("Aluno não foi encontrado!");
@@ -81,10 +96,8 @@ public class CadastrarAlunos {
     }
 
     public void exibirAlunos(){
-        for(Aluno aluno : alunos){
-            if(aluno != null){
-                System.out.println(aluno);
-            }
+        for (int i = 0; i < size; i++) {
+            System.out.println(alunos[i]);
         }
     }
 
