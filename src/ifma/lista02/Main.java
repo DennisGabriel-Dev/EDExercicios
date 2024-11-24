@@ -15,7 +15,9 @@ public class Main {
         // q11();
         // q12();
         // q13();
-        q14();
+        // q14();
+        // q15();
+        q16();
     }
 
     static void q01(){
@@ -228,7 +230,27 @@ public class Main {
         }
     }
 
+    static void q15(){
+        int[][] matriz = matriz();
 
+        for (int i = matriz.length -1; i >= 0; i--) {
+            for (int j = matriz.length - 1; j >= 0 ; j--) {
+                System.out.print(matriz[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    static void q16(){
+        int[][] matriz = matriz();
+
+        for (int i = matriz.length -1; i >= 0; i--) {
+            for (int j = 0; j <  matriz.length; j++) {
+                System.out.print(matriz[j][i] + " ");
+            }
+            System.out.println();
+        }
+    }
 
 
     static void imprimirMatriz(int[][] matriz){
