@@ -6,7 +6,11 @@ public class Main {
         //q02();
         //q03();
         // q04();
-        q05();
+        // q05();
+        // q06();
+        // q07();
+        // q08();
+        q09();
     }
 
     static void q01(){
@@ -69,6 +73,68 @@ public class Main {
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz.length; j++) {
                 if(i >= (matriz.length - 1 - j)){
+                    result += matriz[i][j]+", ";
+                }
+            }
+        }
+
+        result += "]";
+        System.out.println(result);
+    }
+
+    static void q06(){
+        double soma = 0;
+        int quantidade = 0;
+        int[][] matriz = matriz();
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz.length; j++) {
+                if(i >= (matriz.length - 1 - j)){
+                    soma += matriz[i][j];
+                    quantidade++;
+                }
+            }
+        }
+
+        double resultado = soma / quantidade;
+
+        System.out.printf("%.1f \n", resultado);
+    }
+
+    static void q07(){
+        String result = "[";
+        int[][] matriz = matriz();
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz.length; j++) {
+                if(i > (matriz.length - 1 - j)){
+                    result += matriz[i][j]+", ";
+                }
+            }
+        }
+
+        result += "]";
+        System.out.println(result);
+    }
+
+    static void q08(){
+        int[][] matriz = matriz();
+        int max = 0;
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz.length; j++) {
+                if(i >= (matriz.length - 1 - j) && (matriz[i][j] > max)){
+                     max = matriz[i][j];
+                }
+            }
+        }
+
+        System.out.println(max);
+    }
+
+    static void q09(){
+        String result = "[";
+        int[][] matriz = matriz();
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz.length; j++) {
+                if(i <= (matriz.length - 1 - j)){
                     result += matriz[i][j]+", ";
                 }
             }
