@@ -1,6 +1,7 @@
 package DSA;
 
 import java.util.Arrays;
+import java.util.Stack;
 
 public class DSA {
     public static void countingSort(int[] array){
@@ -22,7 +23,7 @@ public class DSA {
             C[A[i] - 1]--;
         }
 
-        System.out.println(Arrays.toString(B));
+       // System.out.println(Arrays.toString(B));
 
     }
 
@@ -41,8 +42,6 @@ public class DSA {
             }
             if (!swapped) break;
         }
-
-        System.out.println(Arrays.toString(arr));
     }
 
 
@@ -84,21 +83,25 @@ public class DSA {
 
     // QUICK SORT
     public static void quickSort(int[] arr) {
-        quickSortHelper(arr, 0, arr.length - 1);
-        System.out.println(Arrays.toString(arr));
-    }
+        Stack<int[]> stack = new Stack<>();
+        stack.push(new int[]{0, arr.length - 1});
 
-    private static void quickSortHelper(int[] arr, int low, int high) {
-        if (low < high) {
-            int pi = partition(arr, low, high);
-            quickSortHelper(arr, low, pi - 1);
-            quickSortHelper(arr, pi + 1, high);
+        while (!stack.isEmpty()) {
+            int[] range = stack.pop();
+            int low = range[0], high = range[1];
+
+            if (low < high) {
+                int pi = partition(arr, low, high);
+                if (pi - 1 > low) stack.push(new int[]{low, pi - 1});
+                if (pi + 1 < high) stack.push(new int[]{pi + 1, high});
+            }
         }
     }
 
     private static int partition(int[] arr, int low, int high) {
-        int pivot = arr[high];
+        int pivot = medianOfThree(arr, low, high);
         int i = low - 1;
+
         for (int j = low; j < high; j++) {
             if (arr[j] < pivot) {
                 i++;
@@ -107,6 +110,18 @@ public class DSA {
         }
         swap(arr, i + 1, high);
         return i + 1;
+    }
+
+    private static int medianOfThree(int[] arr, int low, int high) {
+        int mid = low + (high - low) / 2;
+
+        // Ordena os três valores e usa o do meio como pivô
+        if (arr[mid] < arr[low]) swap(arr, mid, low);
+        if (arr[high] < arr[low]) swap(arr, high, low);
+        if (arr[high] < arr[mid]) swap(arr, high, mid);
+
+        swap(arr, mid, high); // Coloca o pivô na posição `high`
+        return arr[high];
     }
 
     private static void swap(int[] arr, int i, int j) {
