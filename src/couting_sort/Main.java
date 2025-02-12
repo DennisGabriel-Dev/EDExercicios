@@ -5,8 +5,8 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
         int arr[] = {1, 4, 1, 2, 7, 5, 2};
-        int max = Arrays.stream(arr).max().getAsInt();
-        int[] count = new int[max + 1];
+        int k = Arrays.stream(arr).max().getAsInt();
+        int[] count = new int[k + 1];
 
         for (int num : arr) {
             count[num]++;
