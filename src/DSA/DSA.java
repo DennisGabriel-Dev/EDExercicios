@@ -4,30 +4,35 @@ import java.util.Arrays;
 import java.util.Stack;
 
 public class DSA {
-    public static void countingSort(int[] array){
+    public static void countingSort(int[] array) {
         int A[] = array;
+        long startTime = System.nanoTime();
         int k = Arrays.stream(A).max().getAsInt();
-        int C[] = new int[k];
+        int C[] = new int[k + 1];
         int B[] = new int[A.length];
-        // A = [7, 8, 6, 2]
+
         for (int i = 0; i < A.length; i++) {
-            C[A[i] - 1] ++;
+            C[A[i]]++;
         }
 
-        for(int i = 1; i < C.length; i++) {
+        for (int i = 1; i < C.length; i++) {
             C[i] += C[i - 1];
         }
 
-        for (int i = A.length - 1; i >= 0 ; i--) {
-            B[C[A[i] - 1] - 1] = A[i];
-            C[A[i] - 1]--;
+        for (int i = A.length - 1; i >= 0; i--) {
+            B[C[A[i]] - 1] = A[i];
+            C[A[i]]--;
         }
 
-       // System.out.println(Arrays.toString(B));
 
+        long endTime = System.nanoTime();
+        long executionTime = (endTime - startTime);
+        System.out.println("Time counting sort: " + executionTime + "ns");
     }
 
+
     public static void bubbleSort(int[] arr) {
+        long startTime = System.nanoTime();
         int n = arr.length;
         boolean swapped;
         for (int i = 0; i < n - 1; i++) {
@@ -42,6 +47,12 @@ public class DSA {
             }
             if (!swapped) break;
         }
+
+        long endTime = System.nanoTime();
+
+        //System.out.println(Arrays.toString(array1));
+        long executionTime = (endTime - startTime);
+        System.out.println("Time bubble sort: " + executionTime + "ns");
     }
 
 
@@ -83,6 +94,7 @@ public class DSA {
 
     // QUICK SORT
     public static void quickSort(int[] arr) {
+        long startTime = System.nanoTime();
         Stack<int[]> stack = new Stack<>();
         stack.push(new int[]{0, arr.length - 1});
 
@@ -92,10 +104,15 @@ public class DSA {
 
             if (low < high) {
                 int pi = partition(arr, low, high);
-                if (pi - 1 > low) stack.push(new int[]{low, pi - 1});
+                    if (pi - 1 > low) stack.push(new int[]{low, pi - 1});
                 if (pi + 1 < high) stack.push(new int[]{pi + 1, high});
             }
         }
+        long endTime = System.nanoTime();
+
+        //System.out.println(Arrays.toString(array1));
+        long executionTime = (endTime - startTime);
+        System.out.println("Time quick sort: " + executionTime + "ns");
     }
 
     private static int partition(int[] arr, int low, int high) {

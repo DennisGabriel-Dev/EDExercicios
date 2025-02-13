@@ -4,10 +4,14 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.stream.IntStream;
 
-public class Main {
+public class Main2 {
     public static void main(String[] args) {
-        int[] array1 = IntStream.rangeClosed(1, 1000).toArray();
-        shuffleArray(array1);
+        int n = 100000;
+
+        int[] array1 = new int[n];
+        for (int i = 1; i < n; i++) {
+            array1[i] = n - i;
+        }
         int[] array2 = array1.clone();
         int[] array3 = array1.clone();
         int[] array4 = array1.clone();
@@ -28,16 +32,5 @@ public class Main {
 
 
         DSA.quickSort(array5);
-    }
-
-
-    private static void shuffleArray(int[] array) {
-        Random rand = new Random();
-        for (int i = array.length - 1; i > 0; i--) {
-            int j = rand.nextInt(i + 1);
-            int temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
-        }
     }
 }
